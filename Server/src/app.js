@@ -13,7 +13,6 @@ const app = express();
 app.use(cors({
   origin: "https://codemart.netlify.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 connectDB(Constants.DB_URI);
