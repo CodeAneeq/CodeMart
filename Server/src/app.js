@@ -10,9 +10,9 @@ import cors from 'cors'
 
 const app = express();
 
+app.use(cors())
 connectDB(Constants.DB_URI);
 app.use(express.json());
-app.use(cors())
 app.use('/user/api', userRoutes);
 app.use('/product/api', productRoutes);
 app.use('/category/api', categoryRoutes);
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.send("Hello World!");
 })
 
-const PORT = Constants.PORT;
+const PORT = process.env.PORT || Constants.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`server runnning on http://localhost:${PORT}`);
 })
