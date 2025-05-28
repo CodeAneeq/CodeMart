@@ -10,7 +10,7 @@ import cors from 'cors'
 
 const app = express();
 
-app.use(cors())
+app.use(cors({ origin: "https://codemart.netlify.app" }));
 connectDB(Constants.DB_URI);
 app.use(express.json());
 app.use('/user/api', userRoutes);
