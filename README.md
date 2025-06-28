@@ -35,12 +35,3 @@ This is the **backend (server-side)** for the **CodeMart Ecommerce Web Applicati
 ## 📂 Frontend Repository
 
 👉 [CodeMart Ecommerce - Frontend](https://github.com/CodeAneeq/Codemart-frontend)
-
----
-
-## 🚀 How to Run Locally
-
-```bash
-git clone https://github.com/CodeAneeq/codemart-ecommerce-backend.git
-cd codemart-ecommerce-backend
-npm install
