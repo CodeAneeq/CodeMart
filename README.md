@@ -1,27 +1,46 @@
-# 🛒 MERN E-Commerce Web App
-
-A full-stack E-Commerce application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. This app allows users to browse products, add items to the cart, and place orders. It also includes an admin panel to manage products, users, and orders.
 
 ---
 
-## 📌 Features
+## ✅ CodeMart Ecommerce - Backend (`codemart-ecommerce-backend`)
 
-### 👤 User Functionality
-- Register and login with secure authentication (JWT)
-- View all products
-- Filter/search products
-- Add/remove items to/from cart
-- Place orders and view order history
+# CodeMart Ecommerce - Backend
 
-### 🛠️ Admin Functionality
-- Admin login
-- Add, edit, or delete products
-- Manage users and orders
+This is the **backend (server-side)** for the **CodeMart Ecommerce Web Application**, built using **Node.js**, **Express.js**, and **MongoDB**.
 
 ---
 
-## 🧰 Tech Stack
+## 🛠️ Tech Stack
 
-| Frontend | Backend | Database | Others |
-|----------|---------|----------|--------|
-| React.js | Node.js | MongoDB  | JWT, Express.js, Axios, Mongoose, TailwindCSS or Bootstrap |
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+- JWT
+- bcrypt
+- dotenv
+- CORS
+- Multer (for file uploads, if used)
+
+---
+
+## 📸 Features
+
+- Product APIs (CRUD)
+- User Authentication (JWT)
+- Order Management
+- Cart APIs
+- Image Upload (if applicable)
+
+---
+
+## 📂 Frontend Repository
+
+👉 [CodeMart Ecommerce - Frontend](https://github.com/CodeAneeq/Codemart-frontend)
+
+---
+
+## 🚀 How to Run Locally
+
+```bash
+git clone https://github.com/CodeAneeq/codemart-ecommerce-backend.git
+cd codemart-ecommerce-backend
+npm install
