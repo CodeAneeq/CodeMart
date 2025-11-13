@@ -18,28 +18,14 @@ const app = express();
         stripeWebhook
     );
 
-// app.post(
-//     "/order/api/webhook",
-//     bodyParser.raw({ type: "application/json" }),
-//     (req, res) => {
-//         console.log("✅ WEBHOOK REACHED - Headers:", req.headers);
-//         console.log("✅ WEBHOOK BODY TYPE:", typeof req.body);
-//         console.log("✅ WEBHOOK BODY LENGTH:", req.body.length);
-        
-//         // Call your actual webhook function
-//         stripeWebhook(req, res);
-//     }
-// );
 
-// app.use(cors({
-    //   origin: "https://codemart.netlify.app",
-    //   methods: ["GET", "POST", "PUT", "DELETE"],
-    //   allowedHeaders: ['Content-Type', 'Authorization']
-    // }));
-    connectDB(Constants.DB_URI);
-   
-    app.use(cors());
-    app.use(express.json());
+connectDB(Constants.DB_URI);   
+app.use(cors({
+      origin: "https://codemart.netlify.app",
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ['Content-Type', 'Authorization']
+    }));
+app.use(express.json());
 app.use('/user/api', userRoutes);
 app.use('/product/api', productRoutes);
 app.use('/category/api', categoryRoutes);
