@@ -9,11 +9,11 @@ const orderSchema = new Schema({
       quantity: { type: Number, required: true }
     }
   ],
-  paymentMethod: { type: String, default: "Cash On Delivery" },
+  paymentMethod: { type: String, enum: ["cash", "card"], default: "cash" },
   status: {
     type: String,
     default: "Pending",
-    enum: ["Pending", "Processing", "Shipping", "Delivered"]
+    enum: ["Pending", "Processing", "Paid" ,"Shipping", "Delivered", "Fail"]
   },
   address: {
     name: { type: String, required: true },
@@ -25,6 +25,12 @@ const orderSchema = new Schema({
     phoneNumber: { type: Number, required: true },
     completeAddress: { type: String, required: true }
 },
+  stripeSessionId: {
+      type: String, // Stripe ka session ID store karne ke liye
+    },
+    paymentIntentId: {
+      type: String
+    },
 createdAt: { type: Date, default: Date.now }
 });
 

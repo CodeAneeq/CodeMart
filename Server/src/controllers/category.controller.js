@@ -3,16 +3,16 @@ import { categoryModel } from "../models/category.schema.js";
 
 const createCategory = async (req, res) => {
   try {
+    let { name } = req.body;
+    if (!name) {
+      return res
+      .status(400)
+      .json({ status: "failed", message: "All fields are required" });
+    }
     if (!req.file) {
       return res
         .status(400)
         .json({ status: "failed", message: "Please Upload a file" });
-    }
-    let { name } = req.body;
-    if (!name) {
-      return res
-        .status(400)
-        .json({ status: "failed", message: "All fields are required" });
     }
     let existedCategory = await categoryModel.find({ name: name });
     if (existedCategory.length > 0) {

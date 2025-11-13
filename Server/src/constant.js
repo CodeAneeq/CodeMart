@@ -17,4 +17,8 @@ export default class Constants {
   static API_KEY = process.env.API_KEY;
   static API_SECRET = process.env.API_SECRET;
 
+  static STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+  static STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
+  static CLIENT_URL = process.env.CLIENT_URL;
+
 }
