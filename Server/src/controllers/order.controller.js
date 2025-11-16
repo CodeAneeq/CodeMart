@@ -8,12 +8,6 @@ const stripe = new Stripe(Constants.STRIPE_SECRET_KEY);
 export const stripeWebhook = async (req, res) => {
   let event;
     const signature = req.headers['stripe-signature'];
-
-    console.log('🔔 Webhook received');
-  console.log('Signature present:', !!signature);
-  console.log('Webhook secret present:', !!Constants.STRIPE_WEBHOOK_SECRET);
-  console.log('Request body type:', typeof req.body);
-  console.log('Request body is Buffer:', Buffer.isBuffer(req.body));
   
     try {
       event = stripe.webhooks.constructEvent(
