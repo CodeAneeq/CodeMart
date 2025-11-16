@@ -12,23 +12,11 @@ import cors from 'cors'
 
 const app = express();
 
- // app.post(
- //        "/order/api/webhook",
- //        bodyParser.raw({ type: "application/json" }),
- //        stripeWebhook
- //    );
-// server.js mein test route add karo
 app.post(
-  "/test-webhook",
-  express.raw({ type: "application/json" }),
-  (req, res) => {
-    console.log('✅ Test webhook received!');
-    console.log('Headers:', req.headers);
-    console.log('Body type:', typeof req.body);
-    res.json({ success: true, message: 'Webhook received' });
-  }
-);
-
+        "/order/api/webhook",
+        bodyParser.raw({ type: "application/json" }),
+        stripeWebhook
+    );
 
 connectDB(Constants.DB_URI);   
 app.use(cors({
