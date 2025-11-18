@@ -239,4 +239,35 @@ const getUsers = async (req, res) => {
     }
 }
 
-export { signUp, login, forgotPassword, validateOTP, resetPassword, getUsers };
+const AuthWithGoogle = async (req, res) => {
+    try {
+        let payload = {
+            user: {
+                id: req.user._id,
+            },
+        };
+        let token = jwt.sign(payload, Constants.SECRET_KEY, { expiresIn: "1y" });
+        let user = await userModel.findById(req.user._id);
+        if (!user) {
+            return res.status(404).json({status: "failed", message: "User does not found"});
+        }
+        user.token = token;
+        await user.save()
+        res.redirect(`${Constants.CLIENT_URL}/auth-success?token=${token}`)
+    } catch (error) {
+        console.log(error);
+        res.redirect(`${Constants.CLIENT_URL}/login?error=google_failed`)
+    }
+}
+
+const getMyProfile = (req, res) => {
+    try {
+        let user = req.user;
+        res.status(200).json({status: "success", message: "User fetch successfully", data: user});
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({status: "failed", message: "Internal Server Error"})
+    }
+}
+
+export { signUp, login, forgotPassword, validateOTP, resetPassword, getUsers, AuthWithGoogle, getMyProfile };

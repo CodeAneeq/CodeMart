@@ -1,6 +1,7 @@
 import express from 'express';
 import connectDB from './db/connect_db.js';
 import Constants from './constant.js';
+import authRoutes from './routes/auth.routes.js';
 import userRoutes from './routes/user.routes.js';
 import productRoutes from './routes/product.routes.js';
 import categoryRoutes from './routes/category.routes.js';
@@ -9,6 +10,7 @@ import ratingRoutes from './routes/rating.routes.js';
 import bodyParser from 'body-parser';
 import { stripeWebhook } from './controllers/order.controller.js';
 import cors from 'cors'
+import './config/passport.js'
 
 const app = express();
 
@@ -20,12 +22,14 @@ const app = express();
 
 
 connectDB(Constants.DB_URI);   
-app.use(cors({
-      origin: "https://codemart.netlify.app",
-      methods: ["GET", "POST", "PUT", "DELETE"],
-      allowedHeaders: ['Content-Type', 'Authorization']
-    }));
+// app.use(cors({
+//       origin: "https://codemart.netlify.app",
+//       methods: ["GET", "POST", "PUT", "DELETE"],
+//       allowedHeaders: ['Content-Type', 'Authorization']
+//     }));
+app.use(cors())
 app.use(express.json());
+app.use("/auth", authRoutes);
 app.use('/user/api', userRoutes);
 app.use('/product/api', productRoutes);
 app.use('/category/api', categoryRoutes);

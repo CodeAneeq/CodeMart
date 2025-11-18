@@ -91,8 +91,8 @@ const createOrder = async (req, res) => {
                 quantity: item.quantity
                 })),
                 mode: "payment",
-                success_url: 'https://codemart.netlify.app/my-orders',
-                cancel_url: 'https://codemart.netlify.app/cancel',
+                success_url: `${Constants.CLIENT_URL}/my-orders`,
+                cancel_url: `${Constants.CLIENT_URL}/cancel`,
             })
             const order = await orderModel({
                   userId: user._id,

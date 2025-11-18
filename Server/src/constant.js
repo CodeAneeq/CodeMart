@@ -21,4 +21,7 @@ export default class Constants {
   static STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
   static CLIENT_URL = process.env.CLIENT_URL;
 
+  static GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+  static GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
+
 }
