@@ -14,11 +14,16 @@ import './config/passport.js'
 
 const app = express();
 
- app.post(
-        "/order/api/webhook",
-        bodyParser.raw({ type: "application/json" }),
-        stripeWebhook
-    );
+app.post(
+  "/order/api/webhook",
+  bodyParser.raw({ type: "application/json" }),  
+  (req, res, next) => {
+    console.log("=== WEBHOOK RECEIVED ===");
+    console.log("RAW BODY BUFFER:", req.body); 
+    next(); 
+  },
+  stripeWebhook
+);
 
 
 connectDB(Constants.DB_URI);   
