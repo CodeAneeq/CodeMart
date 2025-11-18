@@ -6,7 +6,7 @@ import { userModel } from '../models/user.schema.js';
 passport.use(new GoogleStrategy({
     clientID: Constants.GOOGLE_CLIENT_ID,
     clientSecret: Constants.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback"
+callbackURL: "https://code-mart-eight.vercel.app/auth/google/callback"
   },
   async (accessToken, refreshToken, profile, cb) => {
     try {
